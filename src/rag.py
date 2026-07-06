@@ -44,8 +44,7 @@ def run_rag(upload_file):
     def create_vector_store(documents,embeddings):
         return Chroma.from_documents(
             documents,
-            embedding=embeddings,
-            persist_directory="chroma_db"
+            embedding=embeddings
         )
 
     def vectore_store():
