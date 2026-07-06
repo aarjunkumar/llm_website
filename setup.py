@@ -2,14 +2,15 @@ from setuptools import find_packages,setup
 from typing import List
 
 HYPHEN_DOT_E="-e ."
-def get_packages(file_path)->List[str]:
-    requirement=[]
-    with open(file_path) as file_obj:
-        requirement=file_obj.readlines()
-        requirement=[req.replace("\n","") for req in requirement]
-        if HYPHEN_DOT_E in requirement:
-            requirement.remove(HYPHEN_DOT_E)
-    return requirement
+def get_packages(file_path):
+    requirements=[]
+    with open(file_path, "r", encoding="utf-8") as file_obj:
+        requirements = file_obj.readlines()
+        requirements = [req.strip() for req in requirements]
+    if "-e ." in requirements:
+        requirements.remove("-e .")
+    return requirements
+    
 
 setup(
     name="llm project",
